@@ -45,4 +45,20 @@ Q-Net 요청: `https://www.q-net.or.kr/crf005.do?id=crf00503&jmCd=1630`.
 
 ## 원격·CI·배포
 
-사전 확인 전. 원격 반영, CI 성공, Pages 배포 성공, 공개 화면 확인은 각각 별개이며 아직 성공으로 보고하지 않는다. 이미 게시된 다른 프로젝트는 변경하거나 재배포하지 않는다.
+배포 사전 확인에서 첫 차단이 발생하여 중단했다.
+
+- `git fetch origin main`: 성공. 원격 main은 초기 커밋을 유지한다.
+- GH_TOKEN은 set, GITHUB_TOKEN은 unset임을 값 노출 없이 확인했다. 토큰 부재로 추정하지 않았다.
+- 최초 API 명령: `gh api repos/YunSangYeong/Engineer-Architectural-Work-CBT --jq '{default_branch,has_pages,permissions}'`.
+- 종료 1, 실제 오류: `Get "https://api.github.com/repos/YunSangYeong/Engineer-Architectural-Work-CBT": Forbidden`.
+- 현재 네트워크 허용 목록에는 api.github.com이 없다. API 거부 후 curl 등 다른 경로로 접근하지 않았으며, API 조회를 재시도하지 않았다. 토큰 권한과 Pages Source는 API 결과를 받지 못해 확인 불가다.
+- **main push, CI, configure-pages, deploy는 실행하지 않았다.** Pages의 기존 게시 여부도 미확인이다. 배포 성공과 공개 화면 확인 모두 미확인이다.
+- 배포를 유발하지 않는 `codex/architectural-cbt` 브랜치에 코드 보존만 수행한다. workflow의 push 대상은 main뿐이며 PR도 생성하지 않아 자동 검증·배포를 시작하지 않는다. 원격 보존 커밋은 최종 답변과 Git 이력을 확인한다.
+- 첫 차단 이후 workflow 재실행·수동 실행·대체 배포·배포 유발 추가 push를 하지 않는다. 사용자가 이후 직접 마무리하며, 새로운 명시적 요청 없이는 재시도하지 않는다.
+- 최초 Pages 설정 또는 승인이 필요한지는 확인하지 못했다. 필요하다고 단정하여 임의 설정을 변경하지 않았다. 기존에 배포된 다른 프로젝트는 변경하거나 재배포하지 않았다.
+
+예정 기본 URL은 https://YunSangYeong.github.io/Engineer-Architectural-Work-CBT/ 이며 실제 게시 주소로 검증한 것은 아니다.
+
+## 재사용 클라우드 설정
+
+설치 스크립트와 시작 지침을 환경 draft에 저장했다. 이는 실행 중 인스턴스의 개발 검증과 별개이며, 새 환경 snapshot 게시나 새 작업에서의 복원을 검증한 것이 아니다. 검토·저장·게시는 환경 설정 UI에서 사용자가 수행한다. API 및 공식 자료 접근에 필요한 도메인 추가도 draft로만 저장하며, 저장만으로 현재 네트워크에 적용되거나 Pages가 배포되는 것은 아니다.

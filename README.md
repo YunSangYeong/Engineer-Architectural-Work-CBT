@@ -74,3 +74,7 @@ PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium npm run test:e2e
 기본 예정 주소: https://YunSangYeong.github.io/Engineer-Architectural-Work-CBT/ . 주소만으로 게시 성공을 의미하지 않습니다.
 
 사용자 지시에 따라 배포 전 권한·인증·네트워크 확인부터 첫 차단/실패/승인 필요 시 즉시 중단합니다. 재실행·대체 배포 경로·배포 유발 추가 push는 하지 않습니다. 실제 원격 반영·CI·배포·공개 화면 확인 상태는 검증 보고에 구분해 기록합니다.
+
+### 이번 작업의 배포 결과
+
+사전 `gh api repos/YunSangYeong/Engineer-Architectural-Work-CBT`가 `Get "https://api.github.com/repos/YunSangYeong/Engineer-Architectural-Work-CBT": Forbidden`으로 차단되어, 사용자 지시대로 즉시 중단했습니다. GH_TOKEN은 존재하지만 API 권한·Pages Source는 확인하지 못했습니다. **main은 푸시하지 않았고 CI·Pages 배포를 실행하지 않았습니다.** 공개 화면도 확인하지 않았습니다. 자동 배포 없는 `codex/architectural-cbt` 브랜치에 코드만 보존합니다. 이후 마무리는 사용자가 직접 진행하며 새 명시적 요청 없이 재시도하지 않습니다.
